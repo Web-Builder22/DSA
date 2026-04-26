@@ -1,0 +1,74 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class Node {
+    public:
+    int data;
+    Node *next;
+    Node (int val){
+        data=val;
+    }
+};
+class Linklist{
+    public:
+    Node *head;
+    Linklist(){
+        head=NULL;
+    }
+    void insert(int val){
+        Node *newNode=new Node(val);
+        if(head==NULL){
+            head=newNode;
+            return;
+        }
+        newNode->next=head;
+        head=newNode;
+    }
+    int reverse(){
+        Node *prev=NULL;
+        Node *curr=head;
+        Node *next=NULL;
+        while(curr!=NULL){
+            Node *next=curr->next;
+            curr->next=prev;
+prev = curr;         // prev aage badhao
+        curr = next; 
+        }
+        head=prev;
+         curr = head;
+    int num = 0;
+
+    while(curr != NULL){
+        num = num * 10 + curr->data;
+        curr = curr->next;
+    }
+
+    return num;
+}
+    
+    
+     void  display(){
+        Node *temp=head;
+        while(temp!=NULL){
+            cout<<temp->data<<" "<<endl;
+            temp=temp->next;
+        }
+        
+    }
+};
+int main() {
+  Linklist l1,l2;
+  l1.insert(2);
+  l1.insert(4);
+  l1.insert(3);
+ int l3= l1.reverse();
+  l1.display();
+  l2.insert(5);
+  l2.insert(6);
+  l2.insert(4);
+  int l4=l2.reverse();
+  l2.display();
+  int l5=l3+l4;
+  cout<<"the sum of reversed linked lists are"<<l5<<" "<<endl;
+    return 0;
+}
